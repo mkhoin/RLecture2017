@@ -1,5 +1,5 @@
 ---
-title: "R 강의 3"
+title: "R 강의 4"
 author: "문건웅"
 output: html_document
 ---
@@ -8,70 +8,6 @@ output: html_document
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE,comment = NA)
 ```
-
-
-# 데이타 변환 및 집계
-
-(문제)
-학생 10명이 있다.영어 시험 결과를 eng, 수학 시험 결과를 math라고 하자.
-영어시험은 2번과 9번 학생이 결시하였고 9번 학생이 수학시험을 결시하였다. R에서 결측치는 NA이다.
-
-```{r}
-id=1:10
-eng=c(70,NA,80,85,90,90,60,55,NA,90)
-math=c(80,73,84,90,95,85,60,50,NA,100)
-data=data.frame(id,eng,math)
-data
-```
-
-영어와 수학시험의 결시자가 몇 명인지 계산하고 결시자를 뺀 평균을 계산하여 다음과 같이 보고하라.
-
-```{r,echo=FALSE,message=FALSE}
-require(plyr)
-require(reshape2)
-#is.na(eng)
-#sum(is.na(eng))
-#mean(eng,na.rm=TRUE)
-
-longdf=melt(data,id="id",variable.name="subject",value.name="score")
-#longdf
-result=ddply(longdf,.(subject),summarize,결시자=sum(is.na(score)),평균=mean(score,na.rm=T))
-result
-```
-
-
-(답) 
-
-
-```{r,eval=FALSE}
-require(plyr)
-require(reshape2)
-#is.na(eng)
-#sum(is.na(eng))
-#mean(eng,na.rm=TRUE)
-
-longdf=melt(data,id="id",variable.name="subject",value.name="score")
-#longdf
-result=ddply(longdf,.(subject),summarize,결시자=sum(is.na(score)),평균=mean(score,na.rm=T))
-result
-```
-
-# 지난주 숙제
-
-위의 성적 data를 사용하여 누락된 값을 각 과목의 평균치로 채워 넣으세요.
-
-(힌트) is.na()와 apply()함수를 사용하세요.
-
-
-# 풀이
-
-
-1. 데이타 프레임 전체를 생각하지 말고 하나의 벡터에서 NA 값을 평균치로 입력하는 방법을 생각한다.
-
-2. 이 방법을 하나의 함수로 만든다.
-
-3. apply함수를 이용하여 2.에서 만든 함수를 전체 데이타프레임에 적용한다. 
-
 
 
 # R 그래프를 그릴때 알아야 할 점
@@ -447,6 +383,12 @@ xyplot(Sepal.Length~Petal.Length|Species,data=iris)
 ## ggplot2
 
 [http://rpubs.com/cardiomoon/117769](http://rpubs.com/cardiomoon/117769)
+
+
+
+## ggplotAssist
+
+[https://github.com/cardiomoon/ggplotAssist](https://github.com/cardiomoon/ggplotAssist)
 
 ## 다중회귀 모형에서의 상호작용의 시각화
 
