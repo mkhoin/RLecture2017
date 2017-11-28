@@ -74,7 +74,7 @@ install.packages("moonBook")
 install.packages("devtools")
 devtools::install_github("cardiomoon/moonBook")
 devtools::install_github("cardiomoon/ztable")
-devtools::install_github("cardiomoon/web-r")
+devtools::install_github("cardiomoon/webr")
 ```
 
 # 패키지 불러오기

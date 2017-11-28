@@ -1,0 +1,27 @@
+---
+title: "숙제"
+author: "이름"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+
+## 숙제 1
+
+```{r}
+번호=1:10
+영어=c(70,NA,80,85,90,90,60,55,NA,90)
+수학=c(80,73,84,90,95,85,60,50,NA,100)
+data=data.frame(번호,영어,수학)
+data
+```
+
+## 풀이
+
+```{r}
+summary(data)
+```
+
