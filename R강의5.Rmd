@@ -1,0 +1,65 @@
+---
+title: "R 강의 5"
+author: "문건웅"
+output: html_document
+---
+
+```{r setup,include=FALSE}
+knitr::opts_chunk$set(echo = TRUE,comment = NA)
+```
+
+# 지난주 퀴즈: 튀어나와 보이는 barplot
+
+다음과 같은 데이터가 있다. 
+
+``` {r}
+blue=rbind(c(5,3,4,3),
+           c(3,2,5,1))
+dimnames(blue)<-list(c("A","B"),c("t1","t2","t3","t4"))
+red=rbind(c(1.7,3.5,1.6,1.1),
+          c(2.1,1.0,1.7,0.5))
+dimnames(red)<-list(c("A","B"),c("t1","t2","t3","t4"))
+blue
+red
+```
+
+
+이 자료를 가지고 barplot을 그려본다.
+
+```{r,fig.height=7,fig.show='hold'}
+par(mfrow=c(1,2))
+barplot(blue,col=c("lightblue","blue"),ylim=c(0,10))
+barplot(red,col=c("salmon","red"),ylim=c(0,10))
+par(mfrow=c(1,1))
+```
+
+
+## 오늘의 숙제
+
+여기서 문제이다. 이 두개의 그래프를 겹치게 그려 blue에 비해 red가 튀어나와 보이는 그래프를 그리려면 어떻게 해야 할까? 
+
+
+```{r,echo=FALSE,fig.height=7}
+barplot(blue,col=c("lightblue","blue"),ylim=c(0,10),xlim=c(0,9),
+        space=c(0,1,1,1),axisnames=FALSE)
+barplot(red,col=c("salmon","red"),ylim=c(0,10),axes=FALSE,
+        space=c(0.5,1,1,1),add=TRUE)
+```
+
+
+## 정답
+
+```{r,echo=TRUE,eval=FALSE}
+barplot(blue,col=c("lightblue","blue"),ylim=c(0,10),xlim=c(0,9),
+        space=c(0,1,1,1),axisnames=FALSE)
+barplot(red,col=c("salmon","red"),ylim=c(0,10),axes=FALSE,
+        space=c(0.5,1,1,1),add=TRUE)
+```
+
+
+
+# 오늘 공부할 내용 
+
+R과RStudio를 이용한 재현가능한 연구(Reproducible Research)
+
+[https::/github.com/cardiomoon/RRworkshop](https::/github.com/cardiomoon/RRworkshop)
